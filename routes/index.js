@@ -22,7 +22,14 @@ router.post("/formpage", (req, res, next) => {
   let { name, participants, days, plastic } = req.body;
   Event.create({ name, participants, days })
     .then(event => {
-      console.log(event._id);
+      return Event.findOneAndUpdate(
+        { _id: event._id },
+        { bathtubs: Math.ceil(event.participants * 0.007) }
+      );
+      //event.bathtubs = Math.ceil(event.participants * 0.007);
+    })
+    .then(event => {
+      console.log(event.bathtubs);
       res.redirect(`/result/${event._id}`);
     })
     .catch(err => {
