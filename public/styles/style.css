@@ -3,6 +3,7 @@ a {
 
 html,
 body {
+  height: 90%;
   box-sizing: border-box;
   margin: 0;
   margin-left: 1em;
