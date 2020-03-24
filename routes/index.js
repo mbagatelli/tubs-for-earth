@@ -12,7 +12,7 @@ router.get("/formpage", (req, res, next) => {
   res.render("formpage");
 });
 
-hbs.registerPartials(__dirname + "./../views/partials"); // not sure this is needed here
+hbs.registerPartials(__dirname + "./../views/partials");
 
 /* router.post("/formpage", (req, res, next) => {
   res.render("formpage");
@@ -29,7 +29,6 @@ router.post("/formpage", (req, res, next) => {
       //event.bathtubs = Math.ceil(event.participants * 0.007);
     })
     .then(event => {
-      console.log(event.bathtubs);
       res.redirect(`/result/${event._id}`);
     })
     .catch(err => {
@@ -40,7 +39,6 @@ router.post("/formpage", (req, res, next) => {
 router.get("/result/:id", (req, res, next) => {
   let eventId = req.params.id;
   Event.findById(eventId).then(event => {
-    console.log(event);
     res.render("result", { event });
   });
 });
